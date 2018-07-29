@@ -1,0 +1,8 @@
+---
+- name: INSTALL UTILITIES
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ utilities_list }}"
+

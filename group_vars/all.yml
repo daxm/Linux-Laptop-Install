@@ -1,0 +1,19 @@
+---
+
+utilities_list:
+  - nmon
+  - tree
+  - laptop-mode-tools
+  - powertop
+  - cpufrequtils
+
+games_list:
+  - 0ad
+  - frozen-bubble
+  - hedgewars
+  - lbreakout2
+  - pingus
+  - steam-installer
+  - supertuxkart
+
+web_list:

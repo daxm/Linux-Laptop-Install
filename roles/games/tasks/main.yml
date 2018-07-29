@@ -1,0 +1,8 @@
+---
+- name: INSTALL GAMES
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ games_list }}"
+

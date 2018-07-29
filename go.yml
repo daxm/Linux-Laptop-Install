@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+    - name: APT DIST-UPGRADE
+      apt:
+        update_cache: yes
+        upgrade: dist
+      become: yes
+  roles:
+  - role: utilities
+    tags:
+      - utilities
+  - role: games
+    tags:
+      - games
+  - role: web
+    tags:
+      - web

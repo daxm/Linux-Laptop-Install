@@ -1,0 +1,25 @@
+---
+- name: GOOGLE CHROME -- ADD KEY
+  apt_key:
+    url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+    state: present
+
+- name: GOOGLE CHROME -- ADD REPO
+  apt_repository:
+    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+    filename: "google-chrome"
+    state: present
+    update_cache: yes
+
+- name: GOOGLE CHROME -- INSTALL CHROME
+  apt:
+    name: google-chrome-stable
+    state: present
+
+- name: INSTALL WEB
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ web_list }}"
+
