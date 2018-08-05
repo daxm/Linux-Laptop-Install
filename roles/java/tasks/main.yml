@@ -1,0 +1,38 @@
+---
+- name: ADD JAVA WEBUPD8TEAM REPO
+  apt_repository:
+    repo=ppa:webupd8team/java
+    state=present
+  become: yes
+
+- block:
+  - name: ENSURE WEBUPD8 KEY IS PRESENT
+    apt_key:
+      id=0xC2518248EEA14886
+      keyserver=keyserver.ubuntu.com
+      state=present
+    become: yes
+
+  - name: ENSURE WEBUPD8 APT REPO IS PRESENT
+    apt_repository:
+      repo="deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ ubuntu_version_name }} main"
+      update_cache=yes
+      state=present
+    become: yes
+
+- name: SET LICENSE AS ACCEPTED
+  debconf: name='oracle-java{{ oracle_java_version }}-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+  become: yes
+
+- name: ENSURE ORACLE JAVA IS INSTALLED
+  apt:
+    name="oracle-java{{ oracle_java_version }}-installer"
+    state=present
+    update_cache=yes
+  become: yes
+
+#- name: SET ORACLE JAVA AS DEFAULT
+#  apt:
+#    name="oracle-java{{ oracle_java_version }}-set-default"
+#    state=latest
+#  become: yes

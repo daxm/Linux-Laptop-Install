@@ -1,0 +1,31 @@
+---
+
+- name: CHECK TO SEE IF VMWARE PLAYER IS ALREADY INSTALLED
+  stat: path="/usr/bin/vmplayer"
+  register: vmware_player
+
+- name: CREATE TMP DIRECTORY TO DOWNLOAD VMWARE PLAYER INTO
+  file:
+    path: "{{ vmware_download_dir }}"
+    state: directory
+    mode: 0755
+  when: not vmware_player.stat.exists
+
+- name: CHECK TO SEE IF VMWARE PLAYER DOWNLOAD ALREADY EXISTS
+  stat: path="{{ vmware_download_dir }}/vmware-player.sh"
+  register: vmware_file
+
+- name: DOWNLOAD VMWARE PLAYER
+  get_url:
+    url: "{{ vmware_player_download_url }}"
+    dest: "{{ vmware_download_dir }}/vmware-player.sh"
+    mode: 0755
+  when: not vmware_file.stat.exists and not vmware_player.stat.exists
+
+- name: INSTALL VMWARE PLAYER
+  shell: >
+    {{ vmware_download_dir }}/vmware-player.sh --eulas-agreed --console --required
+  args:
+    creates: /usr/bin/vmware
+  become: true
+  when: vmware_file.stat.exists and not vmware_player.stat.exists

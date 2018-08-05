@@ -1,0 +1,10 @@
+---
+- name: INSTALL SNAP PACKAGE
+  apt:
+    name: snap
+    state: present
+  become: yes
+
+- name: INSTALL SNAPS FROM LIST
+  command: snap install "{{ item }}"
+  with_items: "{{ snaps_list }}"

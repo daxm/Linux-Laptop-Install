@@ -1,18 +1,61 @@
 ---
 - hosts: localhost
-  tasks:
+  pre_tasks:
     - name: APT DIST-UPGRADE
       apt:
         update_cache: yes
         upgrade: dist
       become: yes
+      tags:
+        - standard_install
+
+    - name: INSTALL PACKAGES
+      apt:
+        name: "{{ item }}"
+        state: present
+      become: yes
+      with_items: "{{ packages_list }}"
+      tags:
+        - standard_install
+
+  tasks:
+    - name: INSTALL GAMES
+      apt:
+        name: "{{ item }}"
+        state: present
+      become: yes
+      with_items: "{{ games_list }}"
+      tags:
+        - games
+
+    - name: INSTALL LAPTOP UTILITIES
+      apt:
+        name: "{{ item }}"
+        state: present
+      become: yes
+      with_items: "{{ laptop_utils }}"
+      tags:
+        - laptop
+
+    - name: INSTALL SNAP OF PYCHARM COMMUNITY
+      command: snap install pycharm-community --classic
+      become: yes
+      tags:
+        - snaps
+        - standard_install
+
   roles:
-  - role: utilities
-    tags:
-      - utilities
-  - role: games
-    tags:
-      - games
   - role: web
     tags:
       - web
+      - standard_install
+
+  - role: java
+    tags:
+      - java
+      - standard_install
+
+  - role: vmware
+    tags:
+      - vmware
+      - standard_install

@@ -1,6 +1,6 @@
 ---
 
-utilities_list:
+packages_list:
   - nmon
   - tree
   - snap
@@ -10,7 +10,7 @@ utilities_list:
   - python3-pip
 
 laptop_utils:
-- laptop-mode-tools
+  - laptop-mode-tools
   - powertop
   - cpufrequtils
 
@@ -25,5 +25,13 @@ games_list:
 
 web_list:
 
-snap_list:
- - "pycharm --classic"
+snaps_list:
+ - pycharm-community --classic
+
+broken_vmware_player_download_url: "https://www.vmware.com/go/getplayer-linux"
+vmware_player_download_url: "https://download3.vmware.com/software/player/file/VMware-Player-14.1.2-8497320.x86_64.bundle"
+vmware_download_dir: "/tmp/vmware_download"
+
+ubuntu_version_name: bionic
+
+oracle_java_version: 8
