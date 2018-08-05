@@ -3,7 +3,14 @@
 utilities_list:
   - nmon
   - tree
-  - laptop-mode-tools
+  - snap
+  - git
+  - ansible
+  - python3
+  - python3-pip
+
+laptop_utils:
+- laptop-mode-tools
   - powertop
   - cpufrequtils
 
@@ -17,3 +24,6 @@ games_list:
   - supertuxkart
 
 web_list:
+
+snap_list:
+ - "pycharm --classic"
