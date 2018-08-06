@@ -8,7 +8,6 @@ packages_list:
   - ansible
   - python3
   - python3-pip
-  - flashplugin-nonfree
 
 laptop_utils:
   - laptop-mode-tools
@@ -25,6 +24,7 @@ games_list:
   - supertuxkart
 
 web_list:
+  - flashplugin-nonfree
 
 broken_vmware_player_download_url: "https://www.vmware.com/go/getplayer-linux"
 vmware_player_download_url: "https://download3.vmware.com/software/player/file/VMware-Player-14.1.2-8497320.x86_64.bundle"
