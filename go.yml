@@ -7,7 +7,7 @@
         upgrade: dist
       become: yes
       tags:
-        - standard_install
+        - always
 
     - name: INSTALL PACKAGES
       apt:
@@ -16,7 +16,13 @@
       become: yes
       with_items: "{{ packages_list }}"
       tags:
-        - standard_install
+        - always
+ 
+    - name: SNAP -- REFRESH SNAPS
+      command: snap refresh
+      become: yes
+      tags:
+        - always
 
   tasks:
     - name: INSTALL GAMES
@@ -37,20 +43,20 @@
       tags:
         - laptop
 
-    - name: SNAP INSTALL PYCHARM COMMUNITY
+    - name: SNAPS -- INSTALL PYCHARM COMMUNITY
       command: snap install pycharm-community --classic
       become: yes
       tags:
         - standard_install
 
-    - name: SNAP INSTALL OPERA
+    - name: SNAPS -- INSTALL OPERA
       command: snap install opera
       become: yes
       tags:
         - web
         - standard_install
 
-    - name: SNAP INSTALL MINECRAFT
+    - name: SNAPS -- INSTALL MINECRAFT
       command: snap install minecraft
       become: yes
       tags:
