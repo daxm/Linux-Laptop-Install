@@ -14,7 +14,22 @@
 - name: GOOGLE CHROME -- INSTALL CHROME
   apt:
     name: google-chrome-stable
-    state: present
+    state: latest
+
+- name: OPERA -- ADD KEY
+  apt_key: 
+    url:  "http://deb.opera.com/archive.key"
+    state=present
+
+- name: OPERA -- ADD REPO
+  apt_repository:
+    repo: "deb http://deb.opera.com/opera/ stable non-free"
+    state=present
+
+- name: INSTALL OPERA
+  apt:
+    name= opera
+    state=latest
 
 - name: INSTALL WEB
   apt:
