@@ -19,17 +19,17 @@
 - name: OPERA -- ADD KEY
   apt_key: 
     url:  "http://deb.opera.com/archive.key"
-    state=present
+    state: present
 
 - name: OPERA -- ADD REPO
   apt_repository:
     repo: "deb http://deb.opera.com/opera/ stable non-free"
-    state=present
+    state: present
 
 - name: INSTALL OPERA
   apt:
-    name= opera
-    state=latest
+    name: opera
+    state: latest
 
 - name: INSTALL WEB
   apt:
