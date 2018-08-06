@@ -37,12 +37,24 @@
       tags:
         - laptop
 
-    - name: INSTALL SNAP OF PYCHARM COMMUNITY
+    - name: SNAP INSTALL PYCHARM COMMUNITY
       command: snap install pycharm-community --classic
       become: yes
       tags:
-        - snaps
         - standard_install
+
+    - name: SNAP INSTALL OPERA
+      command: snap install opera
+      become: yes
+      tags:
+        - web
+        - standard_install
+
+    - name: SNAP INSTALL MINECRAFT
+      command: snap install minecraft
+      become: yes
+      tags:
+        - games
 
   roles:
   - role: web
