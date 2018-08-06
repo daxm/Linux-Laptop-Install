@@ -19,7 +19,7 @@
 - name: INSTALL WEB
   apt:
     name: "{{ item }}"
-    state: present
+    state: latest
   become: yes
   with_items: "{{ web_list }}"
 
