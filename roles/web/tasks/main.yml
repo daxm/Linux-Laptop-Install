@@ -16,22 +16,6 @@
     name: google-chrome-stable
     state: latest
 
-- name: OPERA -- ADD KEY
-  apt_key: 
-    url:  "http://deb.opera.com/archive.key"
-    state: present
-
-- name: OPERA -- ADD REPO
-  apt_repository:
-    repo: "deb http://deb.opera.com/opera/ stable non-free"
-    state: present
-    update_cache: yes
-
-- name: INSTALL OPERA
-  apt:
-    name: opera
-    state: latest
-
 - name: INSTALL WEB
   apt:
     name: "{{ item }}"
