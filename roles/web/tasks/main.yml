@@ -24,7 +24,7 @@
 - name: OPERA -- ADD REPO
   apt_repository:
     repo: "deb http://deb.opera.com/opera/ stable non-free"
-    state: absent
+    state: present
     update_cache: yes
 
 - name: INSTALL OPERA
