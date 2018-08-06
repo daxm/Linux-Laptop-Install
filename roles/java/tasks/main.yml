@@ -30,9 +30,3 @@
     state=present
     update_cache=yes
   become: yes
-
-#- name: SET ORACLE JAVA AS DEFAULT
-#  apt:
-#    name="oracle-java{{ oracle_java_version }}-set-default"
-#    state=latest
-#  become: yes
