@@ -8,6 +8,8 @@ packages_list:
   - python3
   - python3-pip
   - iptraf
+  - thunderbird
+  - zenmap
 
 laptop_utils:
   - laptop-mode-tools
