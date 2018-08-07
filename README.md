@@ -29,8 +29,12 @@ ansible-playbook go.yml --tags "standard_install" -K
 
 ```
 
-## List of packages and their tags
-The list of packages that are installed are in the "./group_vars/all.yml" file.  Read the go.yml file to determine which play/role goes with which tag.
+Tag options are:
+- games
+- web
+- laptop
+- standard_install
 
 ## Additional tasks
-- In addition to the list of packages discussed above this playbook also does a Ubuntu dist upgrade.  This might require you to reboot, though I don't think you'll be warned/asked to do so.
+- In addition to the list of packages discussed above this playbook also does a Ubuntu dist upgrade.  This might 
+require you to reboot, though I don't think you'll be warned/asked to do so.
