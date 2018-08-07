@@ -15,7 +15,7 @@
 
   - name: ENSURE WEBUPD8 APT REPO IS PRESENT
     apt_repository:
-      repo="deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ ubuntu_version_name }} main"
+      repo="deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ ansible_distribution_release }} main"
       update_cache=yes
       state=present
     become: yes

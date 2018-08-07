@@ -1,0 +1,41 @@
+---
+- name: REMOVE PREVIOUS DOCKER INSTALLATION
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ docker_cleanup_packages }}"
+
+- name: INSTALL PREREQUISITES
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ docker_prerequisite_packages }}"
+
+- name: IMPORT DOCKER CE KEY
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+
+- name: ADD DOCKER CE REPO
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: INSTALL DOCKER CE
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: yes
+
+- name: ENABLE DOCKER CE SERVICE ON STARTUP
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: ADD USER TO DOCKER GROUP
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: docker
+    append: yes
