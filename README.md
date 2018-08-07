@@ -29,6 +29,7 @@ OR, you can install sections of the playbook, based on tag(s).
 ansible-playbook go.yml --tags "standard_install" -K
 
 ```
+**NOTE:  The first pass through the playbook might fail due to the requirement of rebooting your computer.**
 
 Tag options are:
 - games
