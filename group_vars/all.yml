@@ -8,6 +8,7 @@ packages_list:
   - ansible
   - python3
   - python3-pip
+  - iptraf
 
 laptop_utils:
   - laptop-mode-tools
