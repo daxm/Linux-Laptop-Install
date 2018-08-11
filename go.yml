@@ -62,6 +62,26 @@
       tags:
         - games
 
+    - name: SNAPS -- INSTALL TMNATIONSFOREVER
+      command: snap install tmnationsforever
+      become: yes
+      tags:
+        - games
+
+  post_tasks:
+    - name: SNAPS -- REMOVE DISABLED SNAPS
+      shell: snap list --all | grep disabled | awk '{system("sudo snap remove --revision " $3 " " $1)}'
+      become: yes
+      tags:
+        - always
+
+    - name: APT -- AUTOREMOVE AND AUTOCLEAN
+      apt:
+        autoremove: yes
+        autoclean: yes
+      tags:
+        - always
+
   roles:
   - role: web
     tags:
