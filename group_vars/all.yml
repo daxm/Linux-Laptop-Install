@@ -10,6 +10,8 @@ packages_list:
   - iptraf
   - thunderbird
   - zenmap
+  - openconnect
+  - network-manager-openconnect
 
 laptop_utils:
   - laptop-mode-tools
