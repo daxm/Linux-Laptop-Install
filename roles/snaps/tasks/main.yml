@@ -5,19 +5,19 @@
   tags:
     - standard_install
 
-- name: SNAPS -- INSTALL DOCKER
-  command: snap install docker
-  become: yes
-  tags:
-    - standard_install
-  register: docker_install
-
-- name: ADD USER TO DOCKER GROUP
-  user:
-    name: "{{ lookup('env', 'USER') }}"
-    groups: docker
-    append: yes
-  when: docker_install.changed
+#- name: SNAPS -- INSTALL DOCKER
+#  command: snap install docker
+#  become: yes
+#  tags:
+#    - standard_install
+#  register: docker_install
+#
+#- name: ADD USER TO DOCKER GROUP
+#  user:
+#    name: "{{ lookup('env', 'USER') }}"
+#    groups: docker
+#    append: yes
+#  when: docker_install.changed
 
 - name: SNAPS -- INSTALL OPERA
   command: snap install opera
