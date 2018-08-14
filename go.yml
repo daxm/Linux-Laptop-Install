@@ -43,31 +43,6 @@
       tags:
         - laptop
 
-    - name: SNAPS -- INSTALL PYCHARM COMMUNITY
-      command: snap install pycharm-community --classic
-      become: yes
-      tags:
-        - standard_install
-
-    - name: SNAPS -- INSTALL OPERA
-      command: snap install opera
-      become: yes
-      tags:
-        - web
-        - standard_install
-
-    - name: SNAPS -- INSTALL MINECRAFT
-      command: snap install minecraft
-      become: yes
-      tags:
-        - games
-
-    - name: SNAPS -- INSTALL TMNATIONSFOREVER
-      command: snap install tmnationsforever
-      become: yes
-      tags:
-        - games
-
   post_tasks:
     - name: SNAPS -- REMOVE DISABLED SNAPS
       shell: snap list --all | grep disabled | awk '{system("sudo snap remove --revision " $3 " " $1)}'
@@ -97,3 +72,10 @@
     tags:
       - vmware
       - standard_install
+
+  - role: snaps
+    tags:
+      - snaps
+      - standard_install
+      - web
+      - games

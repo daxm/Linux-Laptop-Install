@@ -1,0 +1,46 @@
+---
+- name: SNAPS -- INSTALL PYCHARM COMMUNITY
+  command: snap install pycharm-community --classic
+  become: yes
+  tags:
+    - standard_install
+
+- name: SNAPS -- INSTALL DOCKER
+  command: snap install docker
+  become: yes
+  tags:
+    - standard_install
+  register: docker_install
+
+- name: ADD USER TO DOCKER GROUP
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: docker
+    append: yes
+  when: docker_install.changed
+
+- name: SNAPS -- INSTALL OPERA
+  command: snap install opera
+  become: yes
+  tags:
+    - web
+    - standard_install
+
+- name: SNAPS -- INSTALL MINECRAFT
+  command: snap install minecraft
+  become: yes
+  tags:
+    - games
+
+- name: SNAPS -- INSTALL TMNATIONSFOREVER
+  command: snap install tmnationsforever
+  become: yes
+  tags:
+    - games
+
+- name: SNAPS -- INSTALL TMNATIONSFOREVER
+  command: snap install tmnationsforever
+  become: yes
+  tags:
+    - games
+
